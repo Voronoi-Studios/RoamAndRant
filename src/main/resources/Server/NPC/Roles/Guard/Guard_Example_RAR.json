@@ -10,14 +10,14 @@
       "Description": "Overrides the memory name if set"
     },
     "NameTranslationKey": {
-      "Value": "server.dialog.GuardMaze.name",
+      "Value": "server.dialog.Guard_Example.name",
       "Description": "Translation key for NPC name display"
     }
   },
   "StartState": "Idle",
   "DefaultNPCAttitude": "Ignore",
   "DefaultPlayerAttitude": "Neutral",
-  "Appearance": "Maze_Guard",
+  "Appearance": "Guard_Example",
   "MaxHealth": 50,
   "IsMemory": true,
   "MemoriesCategory": "Kweebec",
@@ -215,7 +215,7 @@
           {
             "Type": "SetInteractable",
             "Interactable": true,
-            "Hint": "server.interaction.GuardExample"
+            "Hint": "server.interaction.Guard_Example"
           }
         ]
       },

@@ -4,7 +4,8 @@
     {
       "Id": "01",
       "IsStart": true,
-      "DialogText": "server.dialog.GuardMaze.01",
+      "DialogText": "server.dialog.Guard_Example.01",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "Let me in!",
@@ -29,6 +30,7 @@
     {
       "Id": "03",
       "DialogText": "Are you certain? Its very dangerous in there.",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "Enter the maze",
@@ -54,6 +56,7 @@
     {
       "Id": "05",
       "DialogText": "Oh sure some icarus lore dump would go here, very nice maze indeed, people carved the hub out of it, yeah yeah",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "->",
@@ -64,6 +67,7 @@
     {
       "Id": "06",
       "DialogText": "But you asked me about the maze, it is quite dangerous and changes every day. If you want to maximize your loot you can go look trough the shops and see if there is a map available for today's maze",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "->",
@@ -74,6 +78,7 @@
     {
       "Id": "07",
       "DialogText": "Now knowing all this, would you like to enter?",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "Yes",
@@ -104,6 +109,7 @@
     {
       "Id": "10",
       "DialogText": "Certainly! They are created by people just like you, just that they put their skill points in to the cartographer profession. When they run the maze it will be revealed to them on the map, they can then place markers and other labels to help people like you find tressures faster.",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "->",
@@ -120,6 +126,7 @@
     {
       "Id": "12",
       "DialogText": "OH! Don't be fooled, there are rumors a Minotaur lives in there! There are no confirmed sightings so far, as anyone who has encountered it has not come back so far...",
+      "Animation": "Talk",
       "DialogButtons": [
         {
           "ButtonText": "->",

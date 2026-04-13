@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples.Core.Actions.Builder;
+package com.png.RoamAndRant.Core.Actions.Builder;
 
 import com.google.gson.JsonElement;
 import com.hypixel.hytale.server.npc.asset.builder.BuilderDescriptorState;
@@ -6,8 +6,8 @@ import com.hypixel.hytale.server.npc.asset.builder.BuilderSupport;
 import com.hypixel.hytale.server.npc.asset.builder.holder.EnumHolder;
 import com.hypixel.hytale.server.npc.corecomponents.builders.BuilderActionBase;
 import com.hypixel.hytale.server.npc.instructions.Action;
-import com.png.RoamAndRantExamples.Core.Actions.ActionPositionCamera;
-import com.png.RoamAndRantExamples.Core.Camera.CameraPositioner;
+import com.png.RoamAndRant.Core.Actions.ActionPositionCamera;
+import com.png.RoamAndRant.Core.Camera.CameraPositioner;
 
 import javax.annotation.Nonnull;
 

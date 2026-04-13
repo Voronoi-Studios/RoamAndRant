@@ -65,35 +65,19 @@
     "Talk": {
       "Animations": [
         {
-          "Animation": "NPC/Animations/Talk.blockyanim"
-        }
-      ]
-    },
-    "Talk_Explaining": {
-          "Animations": [
+          "Animation": "NPC/Human/Animations/Talk.blockyanim"
+        },
         {
-          "Animation": "NPC/Animations/Talk_Explaining.blockyanim"
-        }
-          ]
-    },
-    "Talk_Finish_Interaction": {
-      "Animations": [
+          "Animation": "NPC/Human/Animations/Talk2.blockyanim"
+        },
         {
-          "Animation": "NPC/Animations/Talk_Finish_Interaction.blockyanim"
-        }
-      ]
-    },
-    "Talk_Pleading": {
-      "Animations": [
+          "Animation": "NPC/Human/Animations/Talk3.blockyanim"
+        },
         {
-          "Animation": "NPC/Animations/Talk_Pleading.blockyanim"
-        }
-      ]
-    },
-    "Talk_Telling": {
-      "Animations": [
+          "Animation": "NPC/Human/Animations/Talk4.blockyanim"
+        },
         {
-          "Animation": "NPC/Animations/Talk_Telling.blockyanim"
+          "Animation": "NPC/Human/Animations/Talk5.blockyanim"
         }
       ]
     }

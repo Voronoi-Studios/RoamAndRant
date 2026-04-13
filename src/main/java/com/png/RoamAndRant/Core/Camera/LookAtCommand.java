@@ -1,16 +1,14 @@
-package com.png.RoamAndRantExamples;
+package com.png.RoamAndRant.Core.Camera;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.*;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
-import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.npc.commands.NPCMultiSelectCommandBase;
 import com.hypixel.hytale.server.npc.entities.NPCEntity;
-import com.png.RoamAndRantExamples.Core.Camera.CameraPositioner;
 import org.jspecify.annotations.NonNull;
 
 /**

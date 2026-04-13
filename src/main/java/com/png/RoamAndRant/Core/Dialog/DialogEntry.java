@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples.Core.Dialog;
+package com.png.RoamAndRant.Core.Dialog;
 
 import com.hypixel.hytale.assetstore.AssetExtraInfo;
 import com.hypixel.hytale.assetstore.AssetKeyValidator;

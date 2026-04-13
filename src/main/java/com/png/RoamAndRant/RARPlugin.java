@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples;
+package com.png.RoamAndRant;
 
 import com.hypixel.hytale.assetstore.AssetRegistry;
 import com.hypixel.hytale.assetstore.map.DefaultAssetMap;
@@ -8,14 +8,16 @@ import com.hypixel.hytale.server.core.asset.type.item.config.Item;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.npc.NPCPlugin;
-import com.png.RoamAndRantExamples.Core.Actions.Builder.BuilderActionPositionCamera;
-import com.png.RoamAndRantExamples.Core.Dialog.DialogAsset;
-import com.png.RoamAndRantExamples.Core.Actions.Builder.BuilderActionOpenDialog;
+import com.png.RoamAndRant.Core.Actions.Builder.BuilderActionPositionCamera;
+import com.png.RoamAndRant.Core.Camera.LookAtCommand;
+import com.png.RoamAndRant.Core.Camera.ResetViewCommand;
+import com.png.RoamAndRant.Core.Dialog.DialogAsset;
+import com.png.RoamAndRant.Core.Actions.Builder.BuilderActionOpenDialog;
 
-public class ExamplePlugin extends JavaPlugin {
+public class RARPlugin extends JavaPlugin {
     private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
 
-    public ExamplePlugin(JavaPluginInit init) {
+    public RARPlugin(JavaPluginInit init) {
         super(init);
         LOGGER.atInfo().log("Hello from %s version %s", this.getName(), this.getManifest().getVersion().toString());
     }

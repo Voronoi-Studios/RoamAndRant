@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples.Core.Actions.Builder;
+package com.png.RoamAndRant.Core.Actions.Builder;
 
 import com.google.gson.JsonElement;
 import com.hypixel.hytale.server.npc.asset.builder.BuilderDescriptorState;
@@ -7,8 +7,8 @@ import com.hypixel.hytale.server.npc.asset.builder.InstructionType;
 import com.hypixel.hytale.server.npc.asset.builder.holder.AssetHolder;
 import com.hypixel.hytale.server.npc.corecomponents.builders.BuilderActionBase;
 import com.hypixel.hytale.server.npc.instructions.Action;
-import com.png.RoamAndRantExamples.Core.Actions.ActionOpenDialog;
-import com.png.RoamAndRantExamples.Core.Actions.DialogExistsValidator;
+import com.png.RoamAndRant.Core.Actions.ActionOpenDialog;
+import com.png.RoamAndRant.Core.Actions.DialogExistsValidator;
 
 import java.util.EnumSet;
 import javax.annotation.Nonnull;

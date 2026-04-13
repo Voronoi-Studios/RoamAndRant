@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples.Core.Actions;
+package com.png.RoamAndRant.Core.Actions;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
@@ -10,8 +10,8 @@ import com.hypixel.hytale.server.npc.corecomponents.ActionBase;
 import com.hypixel.hytale.server.npc.entities.NPCEntity;
 import com.hypixel.hytale.server.npc.role.Role;
 import com.hypixel.hytale.server.npc.sensorinfo.InfoProvider;
-import com.png.RoamAndRantExamples.Core.Actions.Builder.BuilderActionOpenDialog;
-import com.png.RoamAndRantExamples.UIDialogPage;
+import com.png.RoamAndRant.Core.Actions.Builder.BuilderActionOpenDialog;
+import com.png.RoamAndRant.Core.UI.UIDialogPage;
 
 import javax.annotation.Nonnull;
 

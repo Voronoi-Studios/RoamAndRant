@@ -1,4 +1,4 @@
-package com.png.RoamAndRantExamples.Core.Dialog;
+package com.png.RoamAndRant.Core.Dialog;
 
 import com.hypixel.hytale.assetstore.AssetExtraInfo;
 import com.hypixel.hytale.assetstore.AssetKeyValidator;
@@ -10,7 +10,6 @@ import com.hypixel.hytale.assetstore.map.JsonAssetWithMap;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.validation.ValidatorCache;
-import com.hypixel.hytale.server.core.modules.interaction.interaction.config.RootInteraction;
 
 import javax.annotation.Nonnull;
 

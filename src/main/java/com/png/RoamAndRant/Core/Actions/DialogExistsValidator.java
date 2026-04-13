@@ -1,7 +1,7 @@
-package com.png.RoamAndRantExamples.Core.Actions;
+package com.png.RoamAndRant.Core.Actions;
 
 import com.hypixel.hytale.server.npc.asset.builder.validators.AssetValidator;
-import com.png.RoamAndRantExamples.Core.Dialog.DialogAsset;
+import com.png.RoamAndRant.Core.Dialog.DialogAsset;
 
 import java.util.EnumSet;
 import javax.annotation.Nonnull;

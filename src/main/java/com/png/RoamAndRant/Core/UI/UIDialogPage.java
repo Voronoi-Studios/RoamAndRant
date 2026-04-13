@@ -1,14 +1,11 @@
-package com.png.RoamAndRantExamples;
+package com.png.RoamAndRant.Core.UI;
 
-import com.google.common.flogger.AbstractLogger;
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
-import com.hypixel.hytale.codec.codecs.EnumCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.AnimationSlot;
-import com.hypixel.hytale.protocol.FormattedMessage;
 import com.hypixel.hytale.protocol.InteractionType;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
@@ -20,20 +17,16 @@ import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCu
 import com.hypixel.hytale.server.core.modules.interaction.InteractionModule;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.RootInteraction;
-import com.hypixel.hytale.server.core.ui.Value;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.hypixel.hytale.server.core.util.MessageUtil;
 import com.hypixel.hytale.server.npc.entities.NPCEntity;
-import com.png.RoamAndRantExamples.Core.Camera.CameraPositioner;
-import com.png.RoamAndRantExamples.Core.Dialog.DialogAsset;
-import com.png.RoamAndRantExamples.Core.Dialog.DialogButton;
-import com.png.RoamAndRantExamples.Core.Dialog.DialogEntry;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.png.RoamAndRant.Core.Camera.CameraPositioner;
+import com.png.RoamAndRant.Core.Dialog.DialogAsset;
+import com.png.RoamAndRant.Core.Dialog.DialogButton;
+import com.png.RoamAndRant.Core.Dialog.DialogEntry;
 
 import javax.annotation.Nonnull;
 
