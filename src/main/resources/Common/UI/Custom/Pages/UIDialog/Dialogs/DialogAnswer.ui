@@ -1,0 +1,24 @@
+$C = "../../../Common.ui";
+
+Group #DialogAnswer {
+  Padding: (Vertical: 10);
+  LayoutMode: Top;
+
+  Group {
+    LayoutMode: Top;
+    Padding: (Bottom: 5);
+    Label #Speaker {
+      Text: "You:";
+      Style: (
+        FontSize: 11,
+        RenderUppercase: true,
+        TextColor: $C.@ColorCaptionLight);
+    }
+    $C.@ContentSeparator {}
+  }
+
+  Group #AnswerList {
+    LayoutMode: Top;
+  }
+
+}

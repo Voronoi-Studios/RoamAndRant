@@ -1,0 +1,131 @@
+{
+
+  "DialogEntries":[
+    {
+      "Id": "01",
+      "IsStart": true,
+      "DialogText": "server.dialog.GuardMaze.01",
+      "DialogButtons": [
+        {
+          "ButtonText": "Let me in!",
+          "NextId": "02"
+        },
+        {
+          "ButtonText": "What is this maze?",
+          "NextId": "04"
+        },
+        {
+          "ButtonText": "Goodbye",
+          "Exit": true
+        }
+      ]
+    },
+    {
+      "Id": "02",
+      "NameOverride" : "You",
+      "DialogText": "I would love to enter the Maze",
+      "NextId": "03"
+    },
+    {
+      "Id": "03",
+      "DialogText": "Are you certain? Its very dangerous in there.",
+      "DialogButtons": [
+        {
+          "ButtonText": "Enter the maze",
+          "Interaction": "EnterInstanceMaze",
+          "Exit": true
+        },
+        {
+          "ButtonText": "How Dangerous?",
+          "NextId": "11"
+        },
+        {
+          "ButtonText": "Goodbye",
+          "Exit": true
+        }
+      ]
+    },
+    {
+      "Id": "04",
+      "NameOverride" : "You",
+      "DialogText": "What is this maze all about? Can you tell me more?",
+      "NextId": "05"
+    },
+    {
+      "Id": "05",
+      "DialogText": "Oh sure some icarus lore dump would go here, very nice maze indeed, people carved the hub out of it, yeah yeah",
+      "DialogButtons": [
+        {
+          "ButtonText": "->",
+          "NextId": "06"
+        }
+      ]
+    },
+    {
+      "Id": "06",
+      "DialogText": "But you asked me about the maze, it is quite dangerous and changes every day. If you want to maximize your loot you can go look trough the shops and see if there is a map available for today's maze",
+      "DialogButtons": [
+        {
+          "ButtonText": "->",
+          "NextId": "07"
+        }
+      ]
+    },
+    {
+      "Id": "07",
+      "DialogText": "Now knowing all this, would you like to enter?",
+      "DialogButtons": [
+        {
+          "ButtonText": "Yes",
+          "NextId": "08"
+        },
+        {
+          "ButtonText": "Maps?",
+          "NextId": "09"
+        },
+        {
+          "ButtonText": "Goodbye",
+          "Exit": true
+        }
+      ]
+    },
+    {
+      "Id": "08",
+      "NameOverride" : "You",
+      "DialogText": "Yes, absolutely!",
+      "NextId": "03"
+    },
+    {
+      "Id": "09",
+      "NameOverride" : "You",
+      "DialogText": "Can you tell me more about the maps?",
+      "NextId": "10"
+    },
+    {
+      "Id": "10",
+      "DialogText": "Certainly! They are created by people just like you, just that they put their skill points in to the cartographer profession. When they run the maze it will be revealed to them on the map, they can then place markers and other labels to help people like you find tressures faster.",
+      "DialogButtons": [
+        {
+          "ButtonText": "->",
+          "NextId": "07"
+        }
+      ]
+    },
+    {
+      "Id": "11",
+      "NameOverride" : "You",
+      "DialogText": "Be honest, how dangerous is it <i>actually<i>?",
+      "NextId": "12"
+    },
+    {
+      "Id": "12",
+      "DialogText": "OH! Don't be fooled, there are rumors a Minotaur lives in there! There are no confirmed sightings so far, as anyone who has encountered it has not come back so far...",
+      "DialogButtons": [
+        {
+          "ButtonText": "->",
+          "NextId": "07"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+$C = "../../Common.ui";
+
+Group {
+  Anchor: (Width: 600, Top: 150, Bottom: 150, Right: 50);
+
+
+  $C.@DecoratedContainer {
+
+    #Title {
+      Label #DialogTitle {
+        Style: (
+          ...$C.@TitleStyle,
+          HorizontalAlignment: Center,
+        );
+        Padding: (Horizontal: 19);
+      }
+    }
+
+    #Content {
+      LayoutMode: Full;
+      Padding: (Left: 20, Right: 10, Bottom: 20);
+
+      Group  {
+        LayoutMode: BottomScrolling;
+        ScrollbarStyle: $C.@DefaultScrollbarStyle;
+        Padding: (Left: 15, Right: 10, Top: 15);
+        AutoScrollDown: true;
+
+        // Main content area
+        Group #DialogList {
+          LayoutMode: Bottom;
+          Padding: (Top: 25, Right: 10);
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+            Label {
+              Text: "Rootling Mercant:";
+              Style: (
+                FontSize: 11,
+                RenderUppercase: true,
+                TextColor: $C.@ColorCaptionLight);
+            }
+            Label {
+              Text: "Interfaces for Hytale servers. By bridging Hytale's raw UI protocol with high-level abstractions, HyUI allows you to build complex, interactive, and high-performance Interfaces for Hytale servers. By bridging Hytale's raw UI protocol with high-level abstractions, HyUI allows you to build complex, interactive, and high-performance UIs using either a fluent Java Builder API or HYUIML, a declarative UIs using either a fluent Java Builder API or HYUIML, a declarative Fleischarten und Fleischprodukten an. Besuchen Sie uns doch mal mit ihrer ganzen famillie oder so, keine ahnung brauche halt text hier";
+              //Text: "Fleischprodukten an. Besuchen Sie uns doch mal mit ihrer ganzen famillie oder so, keine ahnung brauche halt text hier";
+              Style: (
+                FontSize: 20,
+                TextColor: $C.@ColorDefaultLabel,
+                Wrap: true
+              );
+            }
+          }
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+            Label {
+              Text: "You:";
+              Style: (
+                FontSize: 11,
+                RenderUppercase: true,
+                TextColor: $C.@ColorCaptionLight);
+            }
+            Label {
+              Text: "Will essen, was hast du so?";
+              Style: (
+                FontSize: 20,
+                TextColor: $C.@ColorDefault,
+                Wrap: true
+              );
+              MaskTexturePath: $C.@TextHighlightGradientMask;
+            }
+          }
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+            Label {
+              Text: "Rootling Mercant:";
+              Style: (
+                FontSize: 11,
+                RenderUppercase: true,
+                TextColor: $C.@ColorCaptionLight);
+            }
+            Label {
+              Text: "Fleischarten und Fleischprodukten an. Besuchen Sie uns und entdecken Sie die Vielfalt an hochwertigen";
+              Style: (
+                FontSize: 20,
+                TextColor: $C.@ColorDefaultLabel,
+                Wrap: true
+              );
+            }
+          }
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+            Label {
+              Text: "You:";
+              Style: (
+                FontSize: 11,
+                RenderUppercase: true,
+                TextColor: $C.@ColorCaptionLight);
+            }
+            Label {
+              Text: "Wait what?";
+              Style: (
+                FontSize: 20,
+                TextColor: $C.@ColorDefault,
+                Wrap: true
+              );
+              MaskTexturePath: $C.@TextHighlightGradientMask;
+            }
+          }
+
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+            Label {
+              Text: "Rootling Mercant:";
+              Style: (
+                FontSize: 11,
+                RenderUppercase: true,
+                TextColor: $C.@ColorCaptionLight);
+            }
+            Label {
+              Text: "How cold she not? Didn't Irrki follow all the appropriate courting steps? This one rubbed against the Dark Elf's shapely leg. This one performed the bump of the forehead.
+
+Irrki even left a dead skeever to show how much she cares!";
+              Style: (
+                FontSize: 20,
+                TextColor: $C.@ColorDefaultLabel,
+                Wrap: true
+              );
+            }
+          }
+
+          Group {
+            Padding: (Vertical: 10);
+            LayoutMode: Top;
+
+            Group {
+              LayoutMode: Top;
+              Padding: (Bottom: 5);
+              Label {
+                Text: "You:";
+                Style: (
+                  FontSize: 11,
+                  RenderUppercase: true,
+                  TextColor: $C.@ColorCaptionLight);
+              }
+              $C.@ContentSeparator {}
+            }
+          }
+        }
+      }
+    }
+
+    Group {
+      Anchor: (Horizontal: 6, Height: 100, Top: 38);
+      Background: "GradientOverlay.png";
+      HitTestVisible: false;
+    }
+
+    Group {
+      Anchor: (Bottom: -93);
+      LayoutMode: Center;
+      $C.@BackButton {}
+    }
+
+  }
+}
+
+
+

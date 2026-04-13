@@ -1,0 +1,10 @@
+{
+  "Interactions": [
+    {
+      "Type": "HubPortal",
+      "WorldName": "Test",
+      "WorldGenType": "",
+      "InstanceTemplate": "Dungeon_Goblin"
+    }
+  ]
+}

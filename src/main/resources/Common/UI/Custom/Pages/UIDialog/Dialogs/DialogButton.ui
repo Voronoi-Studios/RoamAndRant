@@ -1,0 +1,37 @@
+$C = "../../../Common.ui";
+
+@BaseGoldButtonLabelStyle = LabelStyle(
+  FontSize: 14,
+  TextColor: #bfcdd5,
+  RenderBold: true,
+  RenderUppercase: true,
+  HorizontalAlignment: Start,
+  ShrinkTextToFit: true,
+  MinShrinkTextToFitFontSize: 12,
+  VerticalAlignment: Center
+);
+
+@GoldButtonLabelStyle = LabelStyle(
+  ...@BaseGoldButtonLabelStyle,
+  TextColor: #d7c9a3
+);
+
+@GoldHoverButtonLabelStyle = LabelStyle(
+  ...@BaseGoldButtonLabelStyle,
+  TextColor: #f9d880
+);
+
+@GoldTextButtonStyle = TextButtonStyle(
+  Default: (Background: PatchStyle(TexturePath: "Gold.png", Border: 12), LabelStyle: @GoldButtonLabelStyle),
+  Hovered: (Background: PatchStyle(TexturePath: "Gold_Hovered.png", Border: 12), LabelStyle: @GoldHoverButtonLabelStyle),
+  Pressed: (Background: PatchStyle(TexturePath: "Gold_Pressed.png", Border: 12), LabelStyle: @GoldHoverButtonLabelStyle),
+  Disabled: (Background: PatchStyle(TexturePath: "Disabled.png", Border: 12), LabelStyle: @GoldButtonLabelStyle)
+);
+
+Group {
+  Padding: (Top: 5);
+  $C.@SmallTertiaryTextButton #DialogButton {
+    @Text = "Store (Farmer)";
+    Style: @GoldTextButtonStyle;
+  }
+}

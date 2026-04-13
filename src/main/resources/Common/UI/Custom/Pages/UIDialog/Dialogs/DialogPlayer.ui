@@ -1,0 +1,20 @@
+$C = "../../../Common.ui";
+
+Group #Dialog {
+  Padding: (Vertical: 10);
+  LayoutMode: Top;
+  Label #Speaker {
+    Style: (
+      FontSize: 11,
+      RenderUppercase: true,
+      TextColor: $C.@ColorCaptionLight);
+  }
+  Label #DialogText {
+    Style: (
+      FontSize: 20,
+      TextColor: $C.@ColorDefaultLabel,
+      Wrap: true
+    );
+    MaskTexturePath: $C.@TextHighlightGradientMask;
+  }
+}
