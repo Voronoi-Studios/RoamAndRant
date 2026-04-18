@@ -33,11 +33,18 @@ public class UIStats extends InteractiveCustomUIPage<UIStats.PageEventData> {
 
     private TestData data;
 
-public record Level(int value, int xp, int xpMax) {
-    public float asPercentage(){
-        return (float)xp / (float)xpMax;
+    public record Level(int value, int xp, int xpMax) {
+        public float asPercentage(){
+            return (float)xp / (float)xpMax;
+        }
     }
-}
+
+    public record PerformanceStats(
+            int deaths,
+            int kills,
+            int damage,
+            int playTimeHours
+    ){}
 
     public record TestData(
             EntityStatMap entityStatMap,
@@ -45,7 +52,9 @@ public record Level(int value, int xp, int xpMax) {
             int unspendPoints,
             int stat1,
             int stat2,
-            int stat3
+            int stat3,
+            PerformanceStats stats,
+            int gold
     ) {}
 
     public UIStats(@Nonnull PlayerRef playerRef, TestData data) {
@@ -66,6 +75,15 @@ public record Level(int value, int xp, int xpMax) {
         buildStatsBars(commandBuilder);
         buildSkillGraph(commandBuilder);
 
+        buildSkills(commandBuilder);
+
+
+        buildPerformance(commandBuilder);
+
+        commandBuilder.set("#Gold #ValueText.Text", formatNumber(data.gold));
+    }
+
+    private void buildSkills(@NonNull UICommandBuilder commandBuilder) {
         commandBuilder.set("#UnspendPoints.Text", Integer.toString(data.unspendPoints));
         commandBuilder.set("#Divinity #ValueText.Text", Integer.toString(data.stat1));
         commandBuilder.set("#Time #ValueText.Text", Integer.toString(data.stat2));
@@ -166,54 +184,49 @@ public record Level(int value, int xp, int xpMax) {
         commandBuilder.set("#BottomRight.Visible", !right);
     }
 
+    private void buildPerformance(UICommandBuilder commandBuilder) {
+        commandBuilder.set("#Deaths #ValueText.Text", formatNumber(data.stats.deaths()));
+        commandBuilder.set("#Kills #ValueText.Text", formatNumber(data.stats.kills()));
+        commandBuilder.set("#Damage #ValueText.Text", formatNumber(data.stats.damage()));
+        commandBuilder.set("#Playtime #ValueText.Text", data.stats.playTimeHours() + "H");
+    }
+
 
     public void handleDataEvent(@Nonnull Ref<EntityStore> ref, @Nonnull Store<EntityStore> store, @Nonnull PageEventData data) {
         UICommandBuilder commandBuilder = new UICommandBuilder();
         UIEventBuilder eventBuilder = new UIEventBuilder();
-
-        if (data.exit) { this.close(); }
     }
-
-
-
     public static class PageEventData {
-        @Nonnull
-        public static final String KEY_BUTTON_ENTRY_INDEX = "ButtonEntryIndex";
-        @Nonnull
-        public static final String KEY_RUN_INTERACTION = "RunInteraction";
-        @Nonnull
-        public static final String KEY_NEXT_ID = "NextId";
-        @Nonnull
-        public static final String KEY_EXIT = "Exit";
-        @Nonnull
         public static final BuilderCodec<UIStats.PageEventData> CODEC = BuilderCodec.builder(
                         UIStats.PageEventData.class, UIStats.PageEventData::new
                 )
-                .append(new KeyedCodec<>(PageEventData.KEY_BUTTON_ENTRY_INDEX, Codec.STRING), (pageEventData, s) -> pageEventData.buttonEntryIndex = Integer.parseInt(s), pageEventData -> Integer.toString(pageEventData.buttonEntryIndex))
-                .add()
-                .append(new KeyedCodec<>(PageEventData.KEY_RUN_INTERACTION, Codec.STRING), (pageEventData, s) -> pageEventData.runInteractionWithId = s, pageEventData -> pageEventData.runInteractionWithId)
-                .add()
-                .append(new KeyedCodec<>(PageEventData.KEY_NEXT_ID, Codec.STRING), (pageEventData, s) -> pageEventData.nextId = s, pageEventData -> pageEventData.nextId)
-                .add()
-                .append(new KeyedCodec<>(PageEventData.KEY_EXIT, Codec.STRING), (pageEventData, s) -> pageEventData.exit = Boolean.parseBoolean(s), pageEventData -> Boolean.toString(pageEventData.exit))
-                .add()
                 .build();
-        public int buttonEntryIndex;
-        public String runInteractionWithId;
-        public String nextId;
-        public boolean exit;
-
-        public static EventData getNew(int dialogListIndex, DialogButton dialogButton) {
-            return new EventData()
-                    .append(PageEventData.KEY_BUTTON_ENTRY_INDEX, Integer.toString(dialogListIndex))
-                    .append(PageEventData.KEY_RUN_INTERACTION, requireNonNullElse(dialogButton.getInteractionId(), ""))
-                    .append(PageEventData.KEY_NEXT_ID, requireNonNullElse(dialogButton.getNextId(), ""))
-                    .append(PageEventData.KEY_EXIT, requireNonNullElse(Boolean.toString(dialogButton.getExit()), "false"));
-        }
     }
+
 
     public static Message StringToMessage(String str){
         if(str == null) return Message.raw("");
         return Message.translation(str);
     }
+
+
+    public static String formatNumber(int value) {
+        if (value < 1_000) {
+            return String.valueOf(value);
+        } else if (value < 1_000_000) {
+            return format(value, 1_000, "K");
+        } else {
+            return format(value, 1_000_000, "M");
+        }
+    }
+
+    private static String format(int value, int divisor, String suffix) {
+        double result = (double) value / divisor;
+        if (result % 1 == 0) {
+            return String.format("%.0f%s", result, suffix);
+        } else {
+            return String.format("%.1f%s", result, suffix);
+        }
+    }
+
 }

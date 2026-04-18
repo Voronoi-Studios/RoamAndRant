@@ -52,8 +52,8 @@ public class TestCommand extends AbstractPlayerCommand {
 
         EntityStatMap entityStatMapComponent = store.getComponent(ref, EntityStatMap.getComponentType());
         UIStats.Level level = new UIStats.Level(new Random().nextInt(100),new Random().nextInt(99),100);
-
-        UIStats.TestData data = new UIStats.TestData(entityStatMapComponent, level,new Random().nextInt(35), new Random().nextInt(10),new Random().nextInt(10),new Random().nextInt(10));
+        UIStats.PerformanceStats stats = new UIStats.PerformanceStats(new Random().nextInt(1999),new Random().nextInt(1999),new Random().nextInt(999999999),new Random().nextInt(999));
+        UIStats.TestData data = new UIStats.TestData(entityStatMapComponent, level,new Random().nextInt(35), new Random().nextInt(10),new Random().nextInt(10),new Random().nextInt(10), stats, new Random().nextInt(9999999));
 
         player.getPageManager().openCustomPage(ref,store,new UIStats(playerRef, data));
     }

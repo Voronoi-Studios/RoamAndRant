@@ -492,7 +492,7 @@ Group {
           Anchor: (Full: 7);
           Group {
             Anchor: (Width: 150, Left: 0);
-            Group {
+            Group #Gold {
               LayoutMode: Center;
               Group {
                 Anchor: (Width: 32, Height: 32, Right: 5);

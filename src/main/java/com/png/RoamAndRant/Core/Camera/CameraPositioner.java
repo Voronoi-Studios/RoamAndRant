@@ -4,6 +4,7 @@ package com.png.RoamAndRant.Core.Camera;
 import com.hypixel.hytale.builtin.hytalegenerator.VectorUtil;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.math.vector.Vector3f;
+import com.hypixel.hytale.math.vector.Vector3i;
 import com.hypixel.hytale.protocol.*;
 import com.hypixel.hytale.protocol.packets.camera.SetServerCamera;
 import com.hypixel.hytale.protocol.packets.world.RotationDirection;
@@ -47,8 +48,8 @@ public class CameraPositioner {
 
         Vector3d vectorDir = new Vector3d(sin(rot), 0, cos(rot));
 
-        Vector3d cameraPos = playerHeadPos.clone().add(vectorDir.normalize().scale(-3));
-        Vector3d finalVectorDir = cameraPos.clone().subtract(playerHeadPos.clone());
+        Vector3d cameraPos = playerHeadPos.clone().add(vectorDir.normalize().scale(-2));
+        Vector3d finalVectorDir = cameraPos.clone().subtract(playerHeadPos.clone().subtract(new Vector3d(0,0.5d,0)));
 
         settings.rotationLerpSpeed = 0.05f;
         settings.positionLerpSpeed = 0.05f;
