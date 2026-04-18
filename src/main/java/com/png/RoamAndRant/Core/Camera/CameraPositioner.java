@@ -1,10 +1,12 @@
 package com.png.RoamAndRant.Core.Camera;
 
 
+import com.hypixel.hytale.builtin.hytalegenerator.VectorUtil;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.math.vector.Vector3f;
 import com.hypixel.hytale.protocol.*;
 import com.hypixel.hytale.protocol.packets.camera.SetServerCamera;
+import com.hypixel.hytale.protocol.packets.world.RotationDirection;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.util.PositionUtil;
@@ -13,7 +15,11 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.function.Supplier;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+
 public class CameraPositioner {
+
     public enum CameraPosition implements Supplier<String> {
         RightShoulder("Framing both with cam to the right"),
         LeftShoulder("Framing both with cam to the left"),
@@ -30,6 +36,31 @@ public class CameraPositioner {
             return this.description;
         }
     }
+
+    public static void selfieCam(@NonNull PlayerRef playerRef) {
+        TransformComponent playerTransform = playerRef.getReference().getStore().getComponent(playerRef.getReference(), TransformComponent.getComponentType()); // store.getComponent(playerRef.getReference(), TransformComponent.getComponentType());
+        Vector3d playerHeadPos = playerTransform.getPosition().clone().add(0d, 1.8d, 0d);
+
+        ServerCameraSettings settings = createServerCameraSettings();
+
+        float rot = playerTransform.getRotation().getYaw();
+
+        Vector3d vectorDir = new Vector3d(sin(rot), 0, cos(rot));
+
+        Vector3d cameraPos = playerHeadPos.clone().add(vectorDir.normalize().scale(-3));
+        Vector3d finalVectorDir = cameraPos.clone().subtract(playerHeadPos.clone());
+
+        settings.rotationLerpSpeed = 0.05f;
+        settings.positionLerpSpeed = 0.05f;
+        settings.rotation = directionToRotation(finalVectorDir.clone().toVector3f());
+        settings.position = PositionUtil.toPositionPacket(cameraPos);
+
+        // set players camera to look at them
+        playerRef.getPacketHandler().writeNoCache(
+                new SetServerCamera(ClientCameraView.Custom, true, settings)
+        );
+    }
+
 
     public static void lookAtEntity(@NonNull PlayerRef playerRef, @NonNull NPCEntity npcEntity, CameraPosition cameraPosition) {
         TransformComponent npcEntityTransform = npcEntity.getReference().getStore().getComponent(npcEntity.getReference(), TransformComponent.getComponentType()); //store.getComponent(npcEntity.getReference(), TransformComponent.getComponentType());

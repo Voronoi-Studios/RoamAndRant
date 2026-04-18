@@ -5,6 +5,9 @@ import com.hypixel.hytale.assetstore.map.DefaultAssetMap;
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.server.core.asset.HytaleAssetStore;
 import com.hypixel.hytale.server.core.asset.type.item.config.Item;
+import com.hypixel.hytale.server.core.entity.InteractionManager;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInstantInteraction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.npc.NPCPlugin;
@@ -37,5 +40,8 @@ public class RARPlugin extends JavaPlugin {
 
         NPCPlugin.get().registerCoreComponentType("OpenDialog", BuilderActionOpenDialog::new);
         NPCPlugin.get().registerCoreComponentType("PositionCamera", BuilderActionPositionCamera::new);
+
+        this.getCommandRegistry().registerCommand(new TestCommand());
+        this.getCodecRegistry(Interaction.CODEC).register("IcarusMazeTeleport", IcarusMazeTeleport.class, IcarusMazeTeleport.CODEC);
     }
 }

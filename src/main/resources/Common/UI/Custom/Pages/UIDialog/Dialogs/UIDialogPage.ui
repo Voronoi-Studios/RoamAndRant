@@ -1,4 +1,4 @@
-$C = "../../Common.ui";
+$C = "../../../Common.ui";
 
 Group {
   Anchor: (Width: 600, Top: 150, Bottom: 150, Right: 50);

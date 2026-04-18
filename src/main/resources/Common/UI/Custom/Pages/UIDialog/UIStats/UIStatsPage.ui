@@ -1,0 +1,575 @@
+$C = "../../../Common.ui";
+
+@BaseGoldButtonLabelStyle = LabelStyle(
+  FontSize: 14,
+  TextColor: #bfcdd5,
+  RenderBold: true,
+  RenderUppercase: true,
+  HorizontalAlignment: Start,
+  ShrinkTextToFit: true,
+  MinShrinkTextToFitFontSize: 12,
+  VerticalAlignment: Center
+);
+
+@GoldButtonLabelStyle = LabelStyle(
+  ...@BaseGoldButtonLabelStyle,
+  TextColor: #d7c9a3
+);
+
+@GoldHoverButtonLabelStyle = LabelStyle(
+  ...@BaseGoldButtonLabelStyle,
+  TextColor: #f9d880
+);
+
+@GoldTextButtonStyle = TextButtonStyle(
+  Default: (Background: PatchStyle(TexturePath: "../Dialogs/Gold.png", Border: 12), LabelStyle: @GoldButtonLabelStyle),
+  Hovered: (Background: PatchStyle(TexturePath: "../Dialogs/Gold_Hovered.png", Border: 12), LabelStyle: @GoldHoverButtonLabelStyle),
+  Pressed: (Background: PatchStyle(TexturePath: "../Dialogs/Gold_Pressed.png", Border: 12), LabelStyle: @GoldHoverButtonLabelStyle),
+  Disabled: (Background: PatchStyle(TexturePath: "../Dialogs/Disabled.png", Border: 12), LabelStyle: @GoldButtonLabelStyle)
+);
+
+@ProgressBarEffectRed = "ProgressBarEffect_Red.png";
+@ProgressBarFillRed = "ProgressBarFill_Red.png";
+@ProgressBarEffectYellow = "ProgressBarEffect_Yellow.png";
+@ProgressBarFillYellow = "ProgressBarFill_Yellow.png";
+@ProgressBarEffectBlue = "ProgressBarEffect_Blue.png";
+@ProgressBarFillBlue = "ProgressBarFill_Blue.png";
+
+@BarElement = Group {
+  @Title = "Level: 100";
+  @Unit = "";
+  @Default = true;
+  @Red = false;
+  @Yellow = false;
+  @Blue = false;
+
+  LayoutMode: Top;
+  Padding: (Vertical: 6);
+
+  Group {
+    Label #Title {
+      Text: @Title;
+      Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Start);
+    }
+
+    Group {
+      LayoutMode: Right;
+      Label #ValueText {
+        Text: "30";
+        Style: (FontSize: 11, RenderUppercase: true, TextColor: $C.@ColorCaptionLight, VerticalAlignment: End);
+      }
+      Label {
+        Text: " / ";
+        Style: (FontSize: 11, RenderUppercase: true, TextColor: $C.@ColorCaptionLight, VerticalAlignment: End);
+      }
+      Label #MaxText {
+        Text: "100";
+        Style: (FontSize: 11, RenderUppercase: true, TextColor: $C.@ColorCaptionLight, VerticalAlignment: End);
+      }
+      Label {
+        Text: @Unit;
+        Style: (FontSize: 11, RenderUppercase: true, TextColor: $C.@ColorCaptionLight, VerticalAlignment: End);
+      }
+    }
+  }
+
+  $C.@ProgressBar #ProgressBarDefault {
+    Anchor: (Top: 4, Horizontal: 0, Height: 6);
+    Visible: @Default;
+  }
+  $C.@ProgressBar #ProgressBarRed {
+    Anchor: (Top: 4, Horizontal: 0, Height: 6);
+    Visible: @Red;
+    BarTexturePath: @ProgressBarFillRed;
+    EffectTexturePath: @ProgressBarEffectRed;
+  }
+  $C.@ProgressBar #ProgressBarYellow {
+    Anchor: (Top: 4, Horizontal: 0, Height: 6);
+    Visible: @Yellow;
+    BarTexturePath: @ProgressBarFillYellow;
+    EffectTexturePath: @ProgressBarEffectYellow;
+  }
+  $C.@ProgressBar #ProgressBarBlue {
+    Anchor: (Top: 4, Horizontal: 0, Height: 6);
+    Visible: @Blue;
+    BarTexturePath: @ProgressBarFillBlue;
+    EffectTexturePath: @ProgressBarEffectBlue;
+  }
+};
+
+@AttributeElement = Group {
+  @Title = "Main";
+  @SubTitle = "Sub";
+  @Value = "30";
+  @IconImage = "CharacterPanelStatIconStamina.png";
+
+  Padding: (Vertical: 2);
+
+  Group {
+    Padding: (Vertical: 6, Horizontal: 6);
+    Background: (TexturePath: "../../../Common/ContainerPanelPatch.png", Border: 4);
+
+    Group {
+      Anchor: (Left: 0, Width: 35);
+      @Icon {
+        @IconPatch = @IconImage;
+      }
+    }
+
+    Group {
+      Anchor: (Left: 40);
+      LayoutMode: Top;
+      Group {
+        LayoutMode: Left;
+        Label {
+          Text: @Title;
+          Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Start);
+        }
+        Label {
+          Text: ": ";
+          Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Start);
+        }
+        Label #ValueText {
+          Text: @Value;
+          Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Start);
+        }
+      }
+      Label {
+        Text: @SubTitle;
+        Style: (FontSize: 11, RenderUppercase: true, TextColor: $C.@ColorCaptionLight, VerticalAlignment: End);
+      }
+    }
+
+    Group {
+      LayoutMode: Right;
+      Anchor: (Right: 0);
+      $C.@SmallTertiaryTextButton {
+        @Text = "+";
+        Style: @GoldTextButtonStyle;
+      }
+    }
+  }
+};
+
+@Icon = Group {
+  Anchor: (Width: 35, Height: 35);
+  Background: "CharacterPanelStatIconBackground.png";
+
+  Group {
+    Background: @IconPatch;
+  }
+};
+
+
+Group {
+  Anchor: (Width: 400, Top: 150, Bottom: 150, Left: 50);
+
+  $C.@DecoratedContainer {
+
+    #Title {
+      Label #StatsTitle {
+        Style: (
+          ...$C.@TitleStyle,
+          HorizontalAlignment: Center,
+        );
+        Padding: (Horizontal: 19);
+        Text: "Stats";
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 20);
+
+      Group {
+        Label {
+          Text: "Class";
+          Style: (FontSize: 20, TextColor: $C.@ColorDefaultLabel, RenderUppercase: true, RenderBold: true, HorizontalAlignment: Start);
+        }
+        Label {
+          Text: "Fighter";
+          Style: (FontSize: 20, TextColor: $C.@ColorDefault, RenderUppercase: true, RenderBold: true, HorizontalAlignment: End);
+          MaskTexturePath: $C.@TextHighlightGradientMask;
+        }
+      }
+
+      $C.@PanelSeparatorFancy {}
+
+      @BarElement #Level { @Unit = " XP"; }
+
+      Group {
+        Padding: (Vertical: 10);
+        $C.@ContentSeparator {}
+      }
+
+      @BarElement #HP {
+        @Title = "HP";
+
+        @ValueText = "50";
+        @MaxText = "100";
+        @Value1 = 0.26;
+
+        @Default = false;
+        @Red = true;
+      }
+      @BarElement #Stamina {
+        @Title = "Stamina";
+        @Default = false;
+        @Yellow = true;
+      }
+      @BarElement #Mana {
+        @Title = "Mana";
+        @Default = false;
+        @Blue = true;
+      }
+
+      Group {
+        Padding: (Top: 10);
+        $C.@ContentSeparator {}
+      }
+
+      Group #SkillGraph {
+        Padding: (Vertical: 10);
+
+        $C.@Panel {
+          Anchor: (Height: 250);
+          Padding: (Full: 8);
+
+          Group {
+            Background: (Color: #11181F);
+
+            Label {
+              Text: "Divinity";
+              Anchor: (Top: 12, Height: 5);
+              Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Center);
+            }
+
+            Label {
+              Text: "Time";
+              Anchor: (Bottom: 30, Left: 0, Width: 160, Height: 5);
+              Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Center);
+            }
+
+            Label {
+              Text: "Energy";
+              Anchor: (Bottom: 30, Width: 160, Right: 0, Height: 5);
+              Style: (FontSize: 16, TextColor: $C.@ColorDefaultLabel, HorizontalAlignment: Center);
+            }
+            Group  {
+              LayoutMode: CenterMiddle;
+
+              // Main content area
+              Group #FullSquare{
+                Anchor: (Width: 173, Height: 150);
+
+                Group #InnerSquare {
+                  Anchor: (Top: 42, Left: 50, Width: 50, Height: 80);
+                  Background: (Color: #803931);
+
+                  Group #TopLeft {
+                    Anchor: (Left: 0, Top: 0, Width: 35, Height: 80);
+                    Background: "TopLeft.png";
+                  }
+                  Group #TopRight {
+                    Anchor: (Right: 0, Top: 0, Width: 13, Height: 65);
+                    Background: "TopRight.png";
+                  }
+                  Group #BottomLeft {
+                    Anchor: (Bottom: 0, Height: 5);
+                    Visible: false;
+                    Background: "BottomLeft.png";
+                  }
+                  Group #BottomRight {
+                    Anchor: (Bottom: 0, Height: 15);
+                    Visible: true;
+                    Background: "BottomRight.png";
+                  }
+                }
+
+                Group #ForegroundTriangle {
+                  Background: "FullTriangleSquare.png";
+                }
+
+                Group #TopPoint {
+                  Background: "Triangle.png";
+                }
+                Group #LeftPoint {
+                  Background: "Triangle.png";
+                }
+                Group #RightPoint {
+                  Background: "Triangle.png";
+                }
+
+              }
+            }
+          }
+        }
+      }
+
+      Group {
+        Padding: (Bottom: 10);
+        $C.@ContentSeparator {}
+      }
+
+      Group {
+        Label {
+          Text: "Attributes";
+          Style: (FontSize: 20, TextColor: $C.@ColorDefaultLabel, RenderUppercase: true, RenderBold: true);
+        }
+        Group {
+          LayoutMode: Right;
+          Label {
+            Text: "Unspend Points: ";
+            Style: (FontSize: 13, TextColor: $C.@ColorCaptionLight, RenderUppercase: true, RenderBold: true, VerticalAlignment: Center);
+          }
+          Label #UnspendPoints {
+            Text: "12";
+            Style: (FontSize: 20, TextColor: $C.@ColorDefault, RenderUppercase: true, RenderBold: true);
+            MaskTexturePath: $C.@TextHighlightGradientMask;
+          }
+        }
+      }
+
+      Group {
+        LayoutMode: Top;
+        @AttributeElement #Divinity {
+          @Title = "Health [Divinity]";
+          @SubTitle = "Increases your health";
+          @IconImage = "SquareIcon.png";
+          @Value = "6";
+        }
+        @AttributeElement #Time {
+          @Title = "Agility [Time]";
+          @SubTitle = "Gives stamina";
+          @IconImage = "TriangleIcon.png";
+          @Value = "5";
+        }
+        @AttributeElement #Energy {
+          @Title = "Magic [Energy]";
+          @SubTitle = "Increases Mana";
+          @IconImage = "CircleIcon.png";
+          @Value = "1";
+        }
+      }
+    }
+  }
+}
+
+Group {
+  Anchor: (Width: 400, Top: 150, Bottom: 150, Right: 50);
+
+  $C.@DecoratedContainer {
+
+    #Title {
+      Label #StatsTitle {
+        Style: (
+          ...$C.@TitleStyle,
+          HorizontalAlignment: Center,
+        );
+        Padding: (Horizontal: 19);
+        Text: "Social";
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 20);
+
+      Group {
+        LayoutMode: CenterMiddle;
+        Group #TopLeft {
+          Anchor: (Width: 300, Height: 86, Bottom: 20);
+          Background: "Icarus_Logo_Banner_T.png";
+        }
+      }
+
+      Group {
+        Padding: (Vertical: 10);
+        $C.@ContentSeparator {}
+      }
+
+      Label {
+        Text: "Performance";
+        Style: (FontSize: 20, TextColor: $C.@ColorDefaultLabel, RenderUppercase: true, RenderBold: true);
+      }
+      Group {
+        Padding: (Bottom: 10, Top: 10);
+        LayoutMode: Center;
+        Group #Deaths {
+          Anchor: (Width: 95);
+          LayoutMode: Top;
+          Label #ValueText {
+            Text: "5";
+            Style: (FontSize: 25, TextColor: $C.@ColorDefault, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: true);
+            MaskTexturePath: $C.@TextHighlightGradientMask;
+          }
+          Label {
+            Text: "Deaths";
+            Style: (FontSize: 15, TextColor: $C.@ColorCaptionLight, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: false);
+          }
+        }
+        Group #Kills {
+          Anchor: (Width: 95);
+          LayoutMode: Top;
+          Label #ValueText {
+            Text: "34";
+            Style: (FontSize: 25, TextColor: $C.@ColorDefault, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: true);
+            MaskTexturePath: $C.@TextHighlightGradientMask;
+          }
+          Label {
+            Text: "Kills";
+            Style: (FontSize: 15, TextColor: $C.@ColorCaptionLight, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: false);
+          }
+        }
+        Group #Damage {
+          Anchor: (Width: 95);
+          LayoutMode: Top;
+          Label #ValueText {
+            Text: "500k";
+            Style: (FontSize: 25, TextColor: $C.@ColorDefault, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: true);
+            MaskTexturePath: $C.@TextHighlightGradientMask;
+          }
+          Label {
+            Text: "Damage";
+            Style: (FontSize: 15, TextColor: $C.@ColorCaptionLight, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: false);
+          }
+        }
+        Group #Playtime {
+          Anchor: (Width: 95);
+          LayoutMode: Top;
+          Label #ValueText {
+            Text: "50h";
+            Style: (FontSize: 25, TextColor: $C.@ColorDefault, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: true);
+            MaskTexturePath: $C.@TextHighlightGradientMask;
+          }
+          Label {
+            Text: "Playtime";
+            Style: (FontSize: 15, TextColor: $C.@ColorCaptionLight, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: false);
+          }
+        }
+      }
+
+      Group {
+        Padding: (Vertical: 10);
+        $C.@ContentSeparator {}
+      }
+
+      Label {
+        Text: "Party";
+        Style: (FontSize: 20, TextColor: $C.@ColorDefaultLabel, RenderUppercase: true, RenderBold: true);
+      }
+
+      Group #Party {
+        $C.@Panel {
+          Anchor: (Height: 200);
+          Padding: (Full: 8);
+
+          Group {
+            Background: (Color: #11181F);
+            Group  {
+              LayoutMode: CenterMiddle;
+
+              // Main content area
+              Group #FullSquare{
+                LayoutMode: Top;
+
+                //Stuff gooes here
+              }
+            }
+          }
+        }
+      }
+
+      Group {
+        Padding: (Vertical: 10);
+        $C.@ContentSeparator {}
+      }
+
+      Group {
+        Padding: (Horizontal: -3, Bottom: 10);
+
+        $C.@SimpleContainer {
+          Anchor: (Full: 7);
+          Group {
+            Anchor: (Width: 150, Left: 0);
+            Group {
+              LayoutMode: Center;
+              Group {
+                Anchor: (Width: 32, Height: 32, Right: 5);
+                Background: "Deco_Treasure.png";
+              }
+              Label #ValueText {
+                Text: "500";
+                Style: (FontSize: 25, TextColor: $C.@ColorDefault, RenderUppercase: true, HorizontalAlignment: Center, RenderBold: true);
+                MaskTexturePath: $C.@TextHighlightGradientMask;
+              }
+            }
+          }
+        }
+
+        Group {
+          Anchor: (Vertical: 7, Width: 170, Right: 7);
+          $C.@SecondaryTextButton #Friendlist {
+            @Enabled = false;
+            @Text = "Auction House";
+          }
+        }
+      }
+
+      Group {
+        LayoutMode: LeftCenterWrap;
+        Padding: (Full: -5);
+        Group {
+           Padding: (Full: 7);
+          $C.@SecondaryTextButton #Friendlist {
+            @Anchor = (Width: 170);
+            @Text = "Friendlist";
+          }
+        }
+        Group {
+          Padding: (Full: 7);
+          $C.@SecondaryTextButton #GuildInfo {
+            @Anchor = (Width: 170);
+            @Text = "Guild Info";
+          }
+        }
+        Group {
+          Padding: (Full: 7);
+
+          $C.@SecondaryTextButton #ClassMenu {
+            @Anchor = (Width: 170);
+            @Text = "Class Menu";
+          }
+
+          Group {
+            Anchor: (Width: 60, Height: 40, Top: -10, Right: -15);
+            Background: "BetaTag.png";
+          }
+        }
+        Group {
+          Padding: (Full: 7);
+          $C.@SecondaryTextButton #SettingsMenu {
+            @Anchor = (Width: 170);
+            @Text = "Settings Menu";
+          }
+        }
+      }
+    }
+
+    Label {
+      Anchor: (Bottom: 25, Height: 5);
+      Text: "Thanks for playing the Beta Test";
+      Style: (FontSize: 15, TextColor: $C.@ColorDefaultLabel, RenderUppercase: true, RenderBold: false, HorizontalAlignment: Center);
+    }
+
+    Group {
+      Anchor: (Bottom: -93);
+      LayoutMode: Center;
+      $C.@BackButton {}
+    }
+
+  }
+}
+
+
+

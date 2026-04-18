@@ -62,7 +62,7 @@ public class UIDialogPage extends InteractiveCustomUIPage<UIDialogPage.PageEvent
 
     @Override
     public void build(@Nonnull Ref<EntityStore> ref, @Nonnull UICommandBuilder commandBuilder, @Nonnull UIEventBuilder eventBuilder, @Nonnull Store<EntityStore> store) {
-        commandBuilder.append("Pages/UIDialog/UIDialogPage.ui");
+        commandBuilder.append("Pages/UIDialog/Dialogs/UIDialogPage.ui");
         commandBuilder.set("#DialogTitle.TextSpans", StringToMessage(npcEntity.getRole().getNameTranslationKey()));
 
         commandBuilder.clear("#DialogList");
